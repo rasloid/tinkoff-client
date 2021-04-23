@@ -1,0 +1,77 @@
+<div class="form">
+
+  <div class="form-row form-row_two">
+    <div class="form-cell">
+      <mat-form-field appearance="outline">
+        <mat-label>Тикер</mat-label>
+        <input type="text"
+               placeholder="Введите текст"
+               matInput
+               [formControl]="ticker"
+               [matAutocomplete]="auto">
+        <mat-hint *ngIf="selectedInstrument | async as instr">{{instr.name}}</mat-hint>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
+          <mat-option *ngFor="let option of instruments" [value]="option.ticker">
+            {{option.ticker}}
+          </mat-option>
+        </mat-autocomplete>
+
+        <mat-progress-spinner
+          class="input-preloader"
+          *ngIf="searchActive"
+          color="primary"
+          mode="indeterminate"
+          diameter="30"
+        >
+        </mat-progress-spinner>
+
+      </mat-form-field>
+    </div>
+
+    <div class="form-cell">
+      <div class="price" *ngIf="selectedInstrument | async as instr">
+        <span class="currency">{{instr.currency}}</span>
+        <ng-container *ngIf="currentTopBid | async as bid; else pricePreloader">
+          <span class="value">{{bid.price}}</span>
+          <span class="bids-count">bids:{{bid.quantity}}</span>
+        </ng-container>
+        <ng-template #pricePreloader>
+          <mat-progress-spinner
+            color="primary"
+            mode="indeterminate"
+            diameter="20"
+          >
+          </mat-progress-spinner>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row form-row_two">
+
+    <div class="form-cell">
+      <mat-form-field appearance="outline">
+        <mat-label>Сумма</mat-label>
+        <input type="number" matInput [formControl]="moneyAmount">
+      </mat-form-field>
+    </div>
+
+    <div class="form-cell">
+      <div class="lots-amount" *ngIf="lotsAmount !== null">=&nbsp;{{lotsAmount}}&nbsp;lots</div>
+    </div>
+
+  </div>
+
+  <div class="form-row form-row_two">
+    <div class="form-cell">
+      <button color="accent" mat-raised-button (click)="buy()" [disabled]="!lotsAmount">
+        <span class="btn-content">
+          Купить
+          <mat-progress-spinner *ngIf="buyLoading" color="primary" mode="indeterminate" diameter="20"></mat-progress-spinner>
+        </span>
+      </button>
+    </div>
+    <div class="form-cell">
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<mat-form-field class="example-chip-list" appearance="outline">
+  <mat-label>Тикеры</mat-label>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <ng-container *ngIf="value">
+      <mat-chip
+        *ngFor="let item of value; index as i"
+        [removable]="true"
+        (removed)="remove(item)">
+        {{item}}
+        <mat-icon matChipRemove>x</mat-icon>
+      </mat-chip>
+    </ng-container>
+    <input
+      placeholder="Новый элемент"
+      #itemInput
+      [formControl]="inputControl"
+      [matChipInputFor]="chipList"
+      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+      (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+
+<!--  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">-->
+<!--    <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">-->
+<!--      {{fruit}}-->
+<!--    </mat-option>-->
+<!--  </mat-autocomplete>-->
+
+</mat-form-field>

@@ -1,0 +1,10 @@
+<mat-slide-toggle
+  class="example-margin"
+  color="accent"
+  [disabled]="loading | async"
+  (toggleChange)="onToggle()"
+  [(ngModel)]='checked'
+  labelPosition="before"
+>
+  {{ checked ? 'Бот запущен' : 'Бот выключен'}}
+</mat-slide-toggle>

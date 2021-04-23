@@ -1,0 +1,7 @@
+.active-items {
+  min-height: 100px;
+
+  & > table {
+    width: 100%;
+  }
+}

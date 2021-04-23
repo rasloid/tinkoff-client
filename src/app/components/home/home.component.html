@@ -1,0 +1,31 @@
+<div class="left">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Мониторинг</mat-card-title>
+      <app-bot-switcher></app-bot-switcher>
+    </mat-card-header>
+    <mat-card-content>
+      <app-bot-instruments-monitor></app-bot-instruments-monitor>
+    </mat-card-content>
+
+    <mat-card-header>
+      <mat-card-title>Лог</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="scroll">
+      <app-actions-log></app-actions-log>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<div class="right">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Конфиг</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <app-config></app-config>
+    </mat-card-content>
+  </mat-card>
+</div>

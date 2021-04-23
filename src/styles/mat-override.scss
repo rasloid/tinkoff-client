@@ -1,0 +1,25 @@
+mat-card-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(120,120,120,.1);
+}
+
+mat-card.mat-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  mat-progress-bar.mat-progress-bar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}
+
+mat-card-content {
+
+  &.scroll {
+    overflow-y: auto;
+  }
+}

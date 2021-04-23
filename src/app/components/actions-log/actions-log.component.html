@@ -1,0 +1,14 @@
+<div class="loading-block">
+  <mat-progress-bar mode="indeterminate" *ngIf="!(logState | async)"></mat-progress-bar>
+
+  <ng-container *ngIf="logState | async as log">
+    <div class="msg" *ngFor="let msg of log; index as i" [ngClass]="i < newItemsCount ? 'temp-active' : ''">
+      <div class="label">
+        <app-label [title]="msg.label"></app-label>
+      </div>
+      <div class="msg-text">{{ msg.text }}</div>
+      <div class="date">{{ msg.date | date }}</div>
+    </div>
+  </ng-container>
+</div>
+

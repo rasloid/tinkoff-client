@@ -1,0 +1,12 @@
+.loading-block {
+  position: relative;
+  min-height: 10px;
+  mat-progress-bar.mat-progress-bar {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,64 @@
+
+  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+
+    <div class="form" [formGroup]="form">
+
+<!--      <div class="form-row">-->
+<!--        <mat-checkbox formControlName="enabled">Бот включен</mat-checkbox>-->
+<!--      </div>-->
+
+<!--      <div class="form-row">-->
+<!--        <mat-form-field appearance="outline">-->
+<!--          <mat-label>Стандартная величина лота</mat-label>-->
+<!--          <input matInput formControlName="defaultLotAmount" type="number" step="1" autocomplete="off">-->
+<!--        </mat-form-field>-->
+<!--      </div>-->
+
+      <div class="form-row">
+
+        <mat-form-field appearance="outline">
+          <mat-label>Величина верхнего лимита</mat-label>
+          <input type="number" matInput formControlName="priceUpDelta" step="0.001"  autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Величина нижнего лимита</mat-label>
+          <input type="number" matInput formControlName="priceDownDelta" step="0.001" autocomplete="off">
+        </mat-form-field>
+
+      </div>
+
+
+
+      <ng-container [formGroup]="filterForm">
+
+        <mat-radio-group formControlName="type">
+          <div class="form-row">
+            <mat-radio-button class="example-radio-button" [value]="filterTypes.none">Все акции</mat-radio-button>
+          </div>
+
+          <div class="form-row">
+            <mat-radio-button class="example-radio-button" [value]="filterTypes.include">Только выбранные</mat-radio-button>
+          </div>
+
+          <div class="form-row">
+            <app-chips-input formControlName="include"></app-chips-input>
+          </div>
+
+          <div class="form-row">
+            <mat-radio-button class="example-radio-button" [value]="filterTypes.exclude">Исключая выбранные</mat-radio-button>
+          </div>
+
+          <div class="form-row">
+            <app-chips-input formControlName="exclude"></app-chips-input>
+          </div>
+
+          <div class="form-row">
+            <button color="accent" mat-raised-button [disabled]="loading || !form.valid || !changed" (click)="saveChanges()">Сохранить</button>
+          </div>
+        </mat-radio-group>
+      </ng-container>
+
+
+    </div>
+

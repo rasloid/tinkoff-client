@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  padding: 20px 0;
+}
+
+mat-form-field {
+  position: relative;
+}
+
+.input-preloader {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.price,
+.lots-amount {
+  display: flex;
+  font-weight: 500;
+  font-size: 1.1em;
+  padding-top: 20px;
+}
+
+.price {
+  & > * {
+    margin-right: 20px;
+  }
+
+  .value {
+    font-style: italic;
+  }
+}
+
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
